@@ -18,6 +18,6 @@ public class LogingPageTest {
         lp.passwordInput.sendKeys(Config.getProperty("passwordManager"));
         lp.loginButton.click();
         lp.expenseModule.click();
-        
+
     }
 }
