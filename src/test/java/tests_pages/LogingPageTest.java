@@ -7,10 +7,10 @@ import utilities.Driver;
 
 public class LogingPageTest {
 
-    Login_Page lp = new Login_Page();
 
     @Test
-    public void loginTest(){
+    public static void loginTest(){
+        Login_Page lp = new Login_Page();
 
         Driver.getDriver().get(Config.getProperty("url"));
 
