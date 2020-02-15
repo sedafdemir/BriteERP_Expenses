@@ -8,10 +8,11 @@ import utilities.Driver;
 public class LogingPageTest {
 
 
+
     @Test
     public static void loginTest(){
-        Login_Page lp = new Login_Page();
 
+        Login_Page lp = new Login_Page();
         Driver.getDriver().get(Config.getProperty("url"));
 
         lp.emailInput.sendKeys(Config.getProperty("emailManager"));
