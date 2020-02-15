@@ -12,6 +12,12 @@ public class Expenses_To_Submit_Page {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    @FindBy(xpath = "//li[.='My Expenses to Submit']")
+    public WebElement textDisplay;
+
+    @FindBy(xpath = "//li[.='New']")
+    public WebElement newTextDisplay;
+
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_list_button_add']")
     public WebElement createButton;
 
