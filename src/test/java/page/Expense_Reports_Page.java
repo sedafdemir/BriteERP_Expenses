@@ -1,4 +1,57 @@
 package page;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utilities.Driver;
+
+import java.util.Random;
+
 public class Expense_Reports_Page {
+    public Expense_Reports_Page(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
+// this is locator for "Create" button
+    @FindBy(xpath = "//button[@accesskey='c']")
+    public WebElement createBtn;
+
+//"My Reports" Header
+@FindBy(xpath = "//li[.='My Reports']")
+public WebElement myReporstsSign;
+
+//"My Reports / New" Sign should be displayed after you press "Create" button
+  @FindBy(xpath = "//li[.='New']")
+    public WebElement newHeader;
+
+//Field inside Pop-up frame "Expense Report Summary" to fill up
+  @FindBy(xpath = "//input[@class='o_field_char o_field_widget o_input o_required_modifier']")
+    public WebElement expense_Report_SummaryField;
+
+// Field inside Pop-up frame "Employee" to choose the employee
+    @FindBy(xpath = "//div[@class='o_field_widget o_field_many2one o_required_modifier']//div//input")
+    public WebElement employee_to_selectField;
+
+//Add an Item button
+@FindBy(xpath = "//a[.='Add an item']")
+public WebElement addAnItem;
+
+//new Window with all items
+    @FindBy(xpath = "//div[@class='modal-content']")
+    public WebElement bigWindow;
+
+    //Search Field
+
+    @FindBy(xpath = "//div[@class='o_searchview']//input")
+    public WebElement filter_in_bigWindow;
+
+    // checkBox in Tablem tr[from 1 - to ...]
+
+
+@FindBy(xpath = "//div[@class='o_expense_tree table-responsive']//table//tr[2]//td")
+public WebElement checkBox_inTable;
+
+// Select button
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary o_select_button']")
+    public WebElement selectButton;
+
 }

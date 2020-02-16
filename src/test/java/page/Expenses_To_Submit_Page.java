@@ -12,10 +12,42 @@ public class Expenses_To_Submit_Page {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    @FindBy(xpath = "//li[.='My Expenses to Submit']")
+    public WebElement textDisplay;
+
+    @FindBy(xpath = "//li[.='New']")
+    public WebElement newTextDisplay;
+
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_list_button_add']")
     public WebElement createButton;
 
-//    @FindBy(id = "o_field_input_19")
-//    public WebElement
+    @FindBy(xpath = "//input[@class='o_field_char o_field_widget o_input o_required_modifier']")
+    public WebElement expenseDescriptionInput;
+
+    @FindBy(xpath = "(//input[@class='o_input ui-autocomplete-input'])[1]")
+    public WebElement productInput;
+
+
+    @FindBy(xpath = "//a[.='[CARD] Apple80']")
+    public WebElement chosenProduct;
+
+    @FindBy(xpath = "//input[@id='o_field_input_65']")
+    public WebElement unitPriceInput;
+
+    @FindBy(xpath = "//input[@id='o_field_input_70']")
+    public WebElement expenseDate;
+
+    @FindBy(xpath = "//div[@name='employee_id']/div")
+    public WebElement employeeField;
+
+    @FindBy(xpath = "//a[.='Anthony Bourdain']")
+    public WebElement employeeName;
+
+    @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "//button[.='Submit to Manager']")
+    public WebElement submitToManagerButton;
+
 
 }
