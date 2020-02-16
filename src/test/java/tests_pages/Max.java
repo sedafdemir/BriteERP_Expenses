@@ -6,9 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.Expense_Reports_Page;
 import page.Expenses_Main_Page;
-import utilities.Driver;
-
-import java.util.concurrent.TimeUnit;
 
 public class Max {
 
@@ -17,7 +14,7 @@ public class Max {
         Expenses_Main_Page expenses_main_page = new Expenses_Main_Page();
         Expense_Reports_Page expense_reports_page = new Expense_Reports_Page();
 //Enter the appp
-        LogingPageTest.loginTest();
+        LoginPageTest.loginTest();
 //Go to Expenses Report module
         expenses_main_page.expenseReport.click();
 

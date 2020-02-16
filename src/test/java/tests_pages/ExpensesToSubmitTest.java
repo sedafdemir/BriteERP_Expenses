@@ -2,20 +2,19 @@ package tests_pages;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.Expenses_Main_Page;
 import page.Expenses_To_Submit_Page;
 import utilities.Config;
 import utilities.Driver;
 
-import java.util.Collection;
-
 public class ExpensesToSubmitTest {
 
-    @Test
+
+    @Test                       // Begimai
     public void createExpense() throws InterruptedException{
 
+
         Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
-        LogingPageTest.loginTest();
+        LoginPageTest.loginTest();
         Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
 
         expenseToSubmit.createButton.click();
@@ -30,7 +29,6 @@ public class ExpensesToSubmitTest {
         expenseToSubmit.employeeName.click();
         expenseToSubmit.saveButton.click();
 
-
         Assert.assertTrue(expenseToSubmit.textAfterSave.isDisplayed());
 
         expenseToSubmit.submitToManagerButton.click();
@@ -40,7 +38,6 @@ public class ExpensesToSubmitTest {
         String expectedMessage = "Expense report submitted, waiting approval";
         String actualMessage = expenseToSubmit.submittedMessage.getText();
         Assert.assertEquals(actualMessage, expectedMessage);
-
         Driver.quitDriver();
     }
 }

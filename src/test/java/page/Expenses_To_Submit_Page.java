@@ -5,8 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-import javax.xml.xpath.XPath;
-
 public class Expenses_To_Submit_Page {
 
     public Expenses_To_Submit_Page(){
@@ -59,5 +57,8 @@ public class Expenses_To_Submit_Page {
 
     @FindBy (xpath = "(//div[@class='o_thread_message_content']/p)[1]")
     public WebElement submittedMessage;
+
+    @FindBy(xpath = "//p[.='Expense created']")
+    public WebElement expenseCreatedText;
 
 }
