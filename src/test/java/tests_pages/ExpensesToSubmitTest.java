@@ -1,5 +1,6 @@
 package tests_pages;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.Expenses_To_Submit_Page;
@@ -23,10 +24,11 @@ public class ExpensesToSubmitTest {
         expenseToSubmit.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
 
         expenseToSubmit.productInput.click();
-        expenseToSubmit.chosenProduct.click();
+        Driver.getDriver().findElement(By.xpath("//a[.='"+Config.getProperty("product")+"']")).click();
 
         expenseToSubmit.employeeField.click();
-        expenseToSubmit.employeeName.click();
+        Driver.getDriver().findElement(By.xpath("//a[.='"+Config.getProperty("employee")+"']")).click();
+
         expenseToSubmit.saveButton.click();
 
         Assert.assertTrue(expenseToSubmit.textAfterSave.isDisplayed());

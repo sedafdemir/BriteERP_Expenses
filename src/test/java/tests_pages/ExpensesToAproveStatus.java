@@ -18,8 +18,8 @@ public class ExpensesToAproveStatus {
     public void setUp() {
 
 
-        LogingPageTest logingPageTest = new LogingPageTest();
-        logingPageTest.loginTest();
+        LoginPageTest loginPageTest = new LoginPageTest();
+        loginPageTest.loginTest();
 
     }
 

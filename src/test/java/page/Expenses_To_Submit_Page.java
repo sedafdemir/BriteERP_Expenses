@@ -11,7 +11,6 @@ public class Expenses_To_Submit_Page {
 
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
     @FindBy(xpath = "//li[.='My Expenses to Submit']")
     public WebElement textDisplay;
 

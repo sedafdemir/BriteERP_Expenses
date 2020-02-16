@@ -8,14 +8,10 @@ import utilities.Driver;
 import java.util.List;
 
 public class Expense_Reports_To_Approve_Page {
-<<<<<<< HEAD
-=======
+
     public Expense_Reports_To_Approve_Page(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
-
-
 
     @FindBy(xpath = "//a[@data-action-id='546']")
     public WebElement expensesToApprove;
@@ -51,7 +47,6 @@ public class Expense_Reports_To_Approve_Page {
 //Expenses report report status from Expense Reports to Approve table(Max)
     @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[6]")
     public WebElement expenseReportStatus;
->>>>>>> 7784627be3b97861ddcd9ea534504b0c725152bd
 
 
 }
