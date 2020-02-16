@@ -14,15 +14,23 @@ public class ExpensesToSubmitTest {
     public void createButton(){
 
         Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
-       LogingPageTest.loginTest();
+        LogingPageTest.loginTest();
         Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
 
-       expenseToSubmit.createButton.click();
-       Assert.assertTrue(expenseToSubmit.newTextDisplay.isDisplayed());
+        expenseToSubmit.createButton.click();
+        Assert.assertTrue(expenseToSubmit.newTextDisplay.isDisplayed());
 
-       expenseToSubmit.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
+        expenseToSubmit.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
 
-       expenseToSubmit.productInput.click();
+        expenseToSubmit.productInput.click();
+        expenseToSubmit.chosenProduct.click();
+
+        expenseToSubmit.employeeField.click();
+        expenseToSubmit.employeeName.click();
+        expenseToSubmit.saveButton.click();
+
+//        expenseToSubmit
+
 
 
     }

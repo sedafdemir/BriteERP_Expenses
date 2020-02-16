@@ -27,14 +27,21 @@ public class Expenses_To_Submit_Page {
     @FindBy(xpath = "(//input[@class='o_input ui-autocomplete-input'])[1]")
     public WebElement productInput;
 
+
+    @FindBy(xpath = "//a[.='[CARD] Apple80']")
+    public WebElement chosenProduct;
+
     @FindBy(xpath = "//input[@id='o_field_input_65']")
     public WebElement unitPriceInput;
 
     @FindBy(xpath = "//input[@id='o_field_input_70']")
     public WebElement expenseDate;
 
-    @FindBy(xpath = "//input[@id='o_field_input_72']")
+    @FindBy(xpath = "//div[@name='employee_id']/div")
     public WebElement employeeField;
+
+    @FindBy(xpath = "//a[.='Anthony Bourdain']")
+    public WebElement employeeName;
 
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
     public WebElement saveButton;
