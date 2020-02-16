@@ -8,11 +8,10 @@ import utilities.Driver;
 import java.util.List;
 
 public class Expense_Reports_To_Approve_Page {
-    public Expense_Reports_To_Approve_Page(){
+
+    public Expense_Reports_To_Approve_Page (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
-
 
 
     @FindBy(xpath = "//a[@data-action-id='546']")
@@ -50,5 +49,32 @@ public class Expense_Reports_To_Approve_Page {
     @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[6]")
     public WebElement expenseReportStatus;
 
+
+    @FindBy(xpath = "//div[@class = 'o_facet_values']")
+    public WebElement approvedFilter;
+
+    @FindBy(xpath = "//div[@class ='fa fa-sm fa-remove o_facet_remove']")
+    public WebElement approvedFilterClose;
+
+    @FindBy(xpath = "//tbody/tr/td[6]")
+    public List<WebElement> listOfElements;
+
+    @FindBy(xpath = "//tbody/tr[1]/td[2]")
+    public WebElement submittedExpense;
+
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-default']")
+    public WebElement refuseButton;
+
+    @FindBy(xpath = "//input[@class='o_field_char o_field_widget o_input o_required_modifier']")
+    public WebElement refuseInputBox;
+
+    @FindBy(xpath = "//button[@class='btn btn-sm oe_highlight']")
+    public WebElement refuseButton2;
+
+    @FindBy(xpath = "//span[contains(text(), 'Expense Reports To Approve')]")
+    public WebElement expense_Report_To_Approve;
+
+    @FindBy(xpath = "//ul[@class='dropdown-menu o_searchview_autocomplete']//li[3]")
+    public WebElement SubmittedDropDown;
 
 }
