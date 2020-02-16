@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import javax.xml.xpath.XPath;
+
 public class Expenses_To_Submit_Page {
 
     public Expenses_To_Submit_Page(){
@@ -49,5 +51,13 @@ public class Expenses_To_Submit_Page {
     @FindBy(xpath = "//button[.='Submit to Manager']")
     public WebElement submitToManagerButton;
 
+    @FindBy(xpath = "//button[.='Approve']")
+    public WebElement approveButton;
+
+    @FindBy(xpath = "//li[.='lunch with team']")
+    public WebElement textAfterSave;
+
+    @FindBy (xpath = "(//div[@class='o_thread_message_content']/p)[1]")
+    public WebElement submittedMessage;
 
 }
