@@ -11,14 +11,15 @@ public class LogingPageTest {
 
     @Test
     public static void loginTest(){
-
         Login_Page lp = new Login_Page();
         Driver.getDriver().get(Config.getProperty("url"));
 
-        lp.emailInput.sendKeys(Config.getProperty("emailManager"));
-        lp.passwordInput.sendKeys(Config.getProperty("passwordManager"));
+        lp.emailInput.sendKeys(Config.getProperty("email"));
+        lp.passwordInput.sendKeys(Config.getProperty("password"));
         lp.loginButton.click();
         lp.expenseModule.click();
 
     }
+
+
 }
