@@ -38,4 +38,17 @@ public class Expense_Reports_To_Approve_Page {
     @FindBy(xpath = "//ul[@class='dropdown-menu o_searchview_autocomplete']/li[3]")
     public WebElement refusedOption;
 
+// Expenses report description from Expense Reports to Approve table(Max)
+    @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[2]")
+    public WebElement expenseReportSummary;
+
+//Expenses report employee name from Expense Reports to Approve table(Max)
+    @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[4]")
+    public WebElement expenseReportEmployeeName;
+
+//Expenses report report status from Expense Reports to Approve table(Max)
+    @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[6]")
+    public WebElement expenseReportStatus;
+
+
 }
