@@ -25,70 +25,35 @@ public class Aiganysh {
 
 
     @Test
-    public void createExpenceAsAnOfficer() {
+    public void createExpenceAsAnOfficer() throws InterruptedException {
         LogingPageTest.loginTest();
         Expenses_To_Submit_Page expenses = new Expenses_To_Submit_Page();
         //1 - Verify if create button is displayed
         Assert.assertTrue(expenses.createButton.isDisplayed(), "Create button is not displayed");
-        //3 - Click on the Create button
+        //2 - Click on the Create button
         expenses.createButton.click();
-        //Expense window should pop up
-        //User should be able to write into Expense description box
+        //3-Enter expense description
         expenses.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
-        //Click on the product dropdown
+        //4-Click on the product dropdown and select the default product
         expenses.productInput.click();
-        expenses.
-        //User should be able to choose product under product dropdown
-        //
-        //6
-        //Click on the unit price module
-        //
-        //User should be able to see the price of the selected product
-        //
-        //7
-        //Click on the quantity module
-        //
-        //User should be able to enter quantity of the product
-        //
-        //8
-        //Click on the Expense Date button
-        //
-        //User should be able to select the date of the Expense
-        //
-        //9
-        //Click on the Employee dropdown
-        //
-        //User should be able to select Employees name
-        //
-        //10
-        //Click on the Employee/Company checkbox under
-        //
-        //User should be able to click one of the Employee or Company checkbox
-        //
-        //11
-        //Payment By text
-        //
-        //under the Payment By text
-        //
-        //12
-        //Total text
-        //
-        //User should be able to see total same as the unit price
-        //
-        //13
-        //Click on the Notes box
-        //
-        //User should be able to add details about this expense on this Notes box
-        //
-        //14
-        //Click on the save button
-        //
-        //User should be able to click on the save button
-        //
-        //15
-        //Click on the Submit to Manager button
-        //
-        //User should be able to click on the Submit to manager button
+        expenses.chosenProduct.click();
+
+        //5-Click on the Employee dropdown and select the default Employee name
+        expenses.employeeField.click();
+        expenses.employeeName.click();
+
+        //6-Click on the save button
+        expenses.saveButton.click();
+        //7-Verify Expense has been created
+
+        Assert.assertTrue(expenses.expenseCreatedText.isDisplayed());
+
+        //8-Click on the Submit to Manager button
+        expenses.submitToManagerButton.click();
+        Thread.sleep(2000);
+        expenses.saveButton.click();
+        //9-Verify Expense report submitted
+        Assert.assertTrue(expenses.submittedMessage.isDisplayed());
 
     }
 }
