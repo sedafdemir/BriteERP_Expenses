@@ -4,14 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import page.*;
 import utilities.Config;
 import utilities.Driver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SmokeSuit {
@@ -32,7 +30,7 @@ public class SmokeSuit {
 
         }
 
-//        @Test                      // Begimai, Aiganysh, Rabia
+//        @Test (priority = 1)                     // Begimai, Aiganysh, Rabia
         public void createExpense() throws InterruptedException{
 
             Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
@@ -59,12 +57,10 @@ public class SmokeSuit {
 
             String expectedMessage = "Expense report submitted, waiting approval";
             String actualMessage = expenseToSubmit.submittedMessage.getText();
-            Assert.assertEquals(actualMessage, expectedMessage);
-            Driver.quitDriver();
         }
 
 
-        @Test (priority = 1)
+        @Test (priority = 2)
         public void expenseReportsToApproveTest() throws InterruptedException {
 
             expenses_main_page.expenseReport.click();
@@ -101,6 +97,7 @@ public class SmokeSuit {
             expense_reports_page.checkBox_inTable.click();
 
             expense_reports_page.selectButton.click();
+            Thread.sleep(2000);
             expense_reports_page.saveButton.click();
             String expectedMessage = "Expense report submitted, waiting approval";
             String actualMessage = expense_reports_page.confirmMessage.getText();
@@ -109,7 +106,7 @@ public class SmokeSuit {
             Driver.quitDriver();
 
         }
-    @Test (priority = 2)
+    @Test (priority = 3)
     public void verificationReportsTable(){
         Expense_Reports_To_Approve_Page expense_reports_to_approve_page = new Expense_Reports_To_Approve_Page();
         expenses_main_page.expenseReportsToApprove.click();
@@ -132,7 +129,7 @@ public class SmokeSuit {
 
     }
 
-    @Test (priority = 4)
+    @Test(priority = 4)
     public void submittedTest() throws  InterruptedException{
         to_approve.expensesToApprove.click();
         Thread.sleep(4000);
@@ -200,7 +197,85 @@ public class SmokeSuit {
 
     }
 
-    @AfterClass
+    @Test (priority = 7)
+    public void VerifyRefuseButton() throws InterruptedException{
+
+//        5	Click on Expense Reports to Approve at the left side
+        expenses_main_page.expenseReportsToApprove.click();
+        Thread.sleep(3000);
+
+//        6	Verify that there is a filter called To Approved in search box
+
+        WebElement filter = to_approve.approvedFilter;
+
+        Assert.assertTrue(filter.getText().equals("To Approve"));
+
+//        7	Cancel the filter (To Approved) option in search box
+
+        to_approve.approvedFilterClose.click();
+
+
+//        8	Verify that all list of any kind of expenses should be displayed
+
+        List<WebElement> listOfStatusWebElement = to_approve.listOfElements;
+        List<String> listOfStatusString = new ArrayList<>();
+
+        Thread.sleep(5000);
+        for (WebElement element: to_approve.listOfElements) {
+            String s = element.getText();
+            listOfStatusString.add(s);
+        }
+        System.out.println(listOfStatusString);
+
+        Assert.assertTrue(listOfStatusString.contains("Approved") && listOfStatusString.contains("Submitted") && listOfStatusString.contains("Refused") );
+
+//        9	Click on one of the submitted expenses displayed in the list
+
+        to_approve.searchBox.sendKeys("Submitted");
+        Thread.sleep(2000);
+        to_approve.SubmittedDropDown.click();
+        Thread.sleep(2000);
+        to_approve.submittedExpense.click();
+
+        String employeeName = Driver.getDriver().findElement(By.xpath("//a[@class='o_form_uri o_field_widget o_required_modifier']")).getText();
+
+//        10	Verify there is a Refuse button right next to Approve button
+
+        Assert.assertTrue(to_approve.refuseButton.isDisplayed());
+
+//        11	Click on Refuse button
+        Thread.sleep(2000);
+
+        to_approve.refuseButton.click();
+
+//        12	Verify that there is a place to write the reason of refusing
+
+        Assert.assertTrue(to_approve.refuseButton.isDisplayed());
+
+//        13	Write the reason of refusing
+
+        to_approve.refuseInputBox.sendKeys(Config.getProperty("reasonForRefusing"));
+//        14	After writing the reason, click on refuse button
+
+        to_approve.refuseButton2.click();
+        Thread.sleep(2000);
+
+//        15	Click on Expense Reports to Approve again
+
+        to_approve.expense_Report_To_Approve.click();
+
+        Thread.sleep(2000);
+//        16	Verify that refused one by manager is shown as refused
+
+        to_approve.approvedFilterClose.click();
+
+        String employeeName2 = Driver.getDriver().findElement(By.xpath("//tbody//tr[2]//td[4]")).getText();
+
+        Assert.assertTrue(employeeName.equals(employeeName2));
+
+    }
+
+    @AfterMethod
     public void quitDriver(){
         Driver.quitDriver();
         }

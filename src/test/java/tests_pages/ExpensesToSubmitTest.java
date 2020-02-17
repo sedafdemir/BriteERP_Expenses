@@ -16,6 +16,7 @@ public class ExpensesToSubmitTest {
 
         Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
         LoginPageTest.loginTest();
+
         Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
 
         expenseToSubmit.createButton.click();
