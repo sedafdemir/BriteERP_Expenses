@@ -13,27 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmokeSuit {
-
+    Expense_Reports_Page expense_reports_page = new Expense_Reports_Page();
     Expense_Reports_To_Approve_Page to_approve = new Expense_Reports_To_Approve_Page();
     Expenses_Main_Page expenses_main_page = new Expenses_Main_Page();
-    Expense_Reports_Page expense_reports_page = new Expense_Reports_Page();
+    Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
 
-    @BeforeMethod
+    @BeforeClass
     public void login() {
-        Login_Page lp = new Login_Page();
-        Driver.getDriver().get(Config.getProperty("url"));
 
-        lp.emailInput.sendKeys(Config.getProperty("email"));
-        lp.passwordInput.sendKeys(Config.getProperty("password"));
-        lp.loginButton.click();
-        lp.expenseModule.click();
+        LoginPageTest.loginTest();
 
     }
 
-    //        @Test (priority = 1)                     // Begimai, Aiganysh, Rabia
+    /*
+        Creating expense as a Manager, save and submit to Manager
+     */
+    @Test(priority = 1)                                                // Begimai, Aiganysh, Rabia
     public void createExpense() throws InterruptedException {
-
-        Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
         Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
 
         expenseToSubmit.createButton.click();
@@ -57,6 +53,7 @@ public class SmokeSuit {
 
         String expectedMessage = "Expense report submitted, waiting approval";
         String actualMessage = expenseToSubmit.submittedMessage.getText();
+        Assert.assertEquals(actualMessage, expectedMessage, "Message verification FAILED!");
     }
 
 
@@ -103,7 +100,6 @@ public class SmokeSuit {
         String actualMessage = expense_reports_page.confirmMessage.getText();
         Assert.assertTrue(actualMessage.contains(expectedMessage));
         Assert.assertTrue(expense_reports_page.confirmMessage.isDisplayed());
-        Driver.quitDriver();
 
     }
 
@@ -120,14 +116,12 @@ public class SmokeSuit {
 //Checking employee name from Expense Reports to Approve table(Max)
         String actualName = expense_reports_to_approve_page.expenseReportEmployeeName.getText();
         String expectedName = Config.getProperty("employee");
-        Assert.assertEquals(actualName, expectedName, "Names doesnt match");
+        Assert.assertEquals(actualName, expectedName, "Names doesn't match");
 
 ////Checking report status from Expense Reports to Approve table(Max)
         String actualStatus = expense_reports_to_approve_page.expenseReportStatus.getText();
         String expectedStatus = "Submitted";
         Assert.assertEquals(actualStatus, expectedStatus, "Status doesnt match");
-        Driver.quitDriver();
-
     }
 
     @Test(priority = 4)
@@ -276,7 +270,7 @@ public class SmokeSuit {
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 8)
     public void goToExpensesModule() {
         to_approve.expensesModule.click();
         to_approve.expensesReportsToApprove.click();
@@ -285,14 +279,14 @@ public class SmokeSuit {
         Assert.assertTrue(actualTitle.contains(expectedInTitle), "");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 9)
     public void submitedEntryList() {
         int amountOfSubmittedEntry = to_approve.submittedList.size();
         int amountOfDisplayedSubmitedEntry = Integer.parseInt(to_approve.amountOfDisplayedSubmittedEntry.getText());
         Assert.assertEquals(amountOfDisplayedSubmitedEntry, amountOfSubmittedEntry, "Not passed");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 10)
     public void approveEntry() {
 
         to_approve.sampleEntry.click();
@@ -302,7 +296,7 @@ public class SmokeSuit {
 
     }
 
-    @AfterMethod
+    @AfterClass
     public void quitDriver() {
         Driver.quitDriver();
     }
