@@ -11,7 +11,6 @@ public class Expenses_To_Submit_Page {
 
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
     @FindBy(xpath = "//li[.='My Expenses to Submit']")
     public WebElement textDisplay;
 
@@ -49,11 +48,16 @@ public class Expenses_To_Submit_Page {
     @FindBy(xpath = "//button[.='Submit to Manager']")
     public WebElement submitToManagerButton;
 
-    @FindBy(xpath = "//p[.='Expense created']")
-    public WebElement expenseCreatedText;
+    @FindBy(xpath = "//button[.='Approve']")
+    public WebElement approveButton;
+
+    @FindBy(xpath = "//li[.='lunch with team']")
+    public WebElement textAfterSave;
 
     @FindBy (xpath = "(//div[@class='o_thread_message_content']/p)[1]")
     public WebElement submittedMessage;
 
+    @FindBy(xpath = "//p[.='Expense created']")
+    public WebElement expenseCreatedText;
 
 }

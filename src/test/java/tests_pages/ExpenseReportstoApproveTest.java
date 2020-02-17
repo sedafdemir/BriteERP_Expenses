@@ -21,7 +21,7 @@ public class ExpenseReportstoApproveTest {
         Expenses_Main_Page expenses_main_page = new Expenses_Main_Page();
         Expense_Reports_Page expense_reports_page = new Expense_Reports_Page();
 //Enter the appp
-        LogingPageTest.loginTest();
+        LoginPageTest.loginTest();
 //Go to Expenses Report module
         expenses_main_page.expenseReport.click();
 
@@ -69,7 +69,7 @@ public class ExpenseReportstoApproveTest {
         public void myModule2(){
     Expenses_Main_Page expenses_main_page = new Expenses_Main_Page();
     Expense_Reports_To_Approve_Page expense_reports_to_approve_page = new Expense_Reports_To_Approve_Page();
-        LogingPageTest.loginTest();
+        LoginPageTest.loginTest();
         expenses_main_page.expenseReportsToApprove.click();
 
 //Checking expenses description from from Expense Reports to Approve table(Max)
