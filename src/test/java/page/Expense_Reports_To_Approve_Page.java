@@ -39,6 +39,19 @@ public class Expense_Reports_To_Approve_Page {
     @FindBy(xpath = "//ul[@class='dropdown-menu o_searchview_autocomplete']/li[3]")
     public WebElement refusedOption;
 
+    @FindBy(xpath = "(//span[@class='oe_menu_text'])[9]")
+    public WebElement expensesModule;
+    @FindBy(xpath = "(//span[@class='oe_menu_text'])[25]")
+    public WebElement expensesReportsToApprove;
+    @FindBy(xpath = "//table[@class='o_list_view table table-condensed table-striped o_list_view_ungrouped']/tbody/tr/td[6]")
+    public List<WebElement> submittedList;
+    @FindBy(xpath = "//span[@class='o_pager_limit']")
+    public WebElement amountOfDisplayedSubmittedEntry;
+    @FindBy(xpath = "//table[@class='o_list_view table table-condensed table-striped o_list_view_ungrouped']/tbody/tr[2]/td[6]")
+    public WebElement sampleEntry;
+    @FindBy(xpath = "//button[.='Approve']")
+    public WebElement approveButton;
+
 // Expenses report description from Expense Reports to Approve table(Max)
     @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[2]")
     public WebElement expenseReportSummary;

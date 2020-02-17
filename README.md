@@ -21,18 +21,3 @@ Everybody who's working on APPOLLO Project must be signed to TechPro Jira Board,
 
 
 
-
-
-
-
-
-
-
-
-
-Message Maksym Kryklyvets
-
-
-Downloads
-
-

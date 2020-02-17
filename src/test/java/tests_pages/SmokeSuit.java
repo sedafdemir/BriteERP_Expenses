@@ -19,118 +19,119 @@ public class SmokeSuit {
     Expense_Reports_Page expense_reports_page = new Expense_Reports_Page();
 
     @BeforeMethod
-    public void login(){
-            Login_Page lp = new Login_Page();
-            Driver.getDriver().get(Config.getProperty("url"));
+    public void login() {
+        Login_Page lp = new Login_Page();
+        Driver.getDriver().get(Config.getProperty("url"));
 
-            lp.emailInput.sendKeys(Config.getProperty("email"));
-            lp.passwordInput.sendKeys(Config.getProperty("password"));
-            lp.loginButton.click();
-            lp.expenseModule.click();
+        lp.emailInput.sendKeys(Config.getProperty("email"));
+        lp.passwordInput.sendKeys(Config.getProperty("password"));
+        lp.loginButton.click();
+        lp.expenseModule.click();
 
-        }
+    }
 
-//        @Test (priority = 1)                     // Begimai, Aiganysh, Rabia
-        public void createExpense() throws InterruptedException{
+    //        @Test (priority = 1)                     // Begimai, Aiganysh, Rabia
+    public void createExpense() throws InterruptedException {
 
-            Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
-            Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
+        Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
+        Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
 
-            expenseToSubmit.createButton.click();
-            Assert.assertTrue(expenseToSubmit.newTextDisplay.isDisplayed());
+        expenseToSubmit.createButton.click();
+        Assert.assertTrue(expenseToSubmit.newTextDisplay.isDisplayed());
 
-            expenseToSubmit.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
+        expenseToSubmit.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
 
-            expenseToSubmit.productInput.click();
-            Driver.getDriver().findElement(By.xpath("//a[.='"+Config.getProperty("product")+"']")).click();
+        expenseToSubmit.productInput.click();
+        Driver.getDriver().findElement(By.xpath("//a[.='" + Config.getProperty("product") + "']")).click();
 
-            expenseToSubmit.employeeField.click();
-            Driver.getDriver().findElement(By.xpath("//a[.='"+Config.getProperty("employee")+"']")).click();
+        expenseToSubmit.employeeField.click();
+        Driver.getDriver().findElement(By.xpath("//a[.='" + Config.getProperty("employee") + "']")).click();
 
-            expenseToSubmit.saveButton.click();
+        expenseToSubmit.saveButton.click();
 
-            Assert.assertTrue(expenseToSubmit.textAfterSave.isDisplayed());
+        Assert.assertTrue(expenseToSubmit.textAfterSave.isDisplayed());
 
-            expenseToSubmit.submitToManagerButton.click();
-            Thread.sleep(2000);
-            expenseToSubmit.saveButton.click();
+        expenseToSubmit.submitToManagerButton.click();
+        Thread.sleep(2000);
+        expenseToSubmit.saveButton.click();
 
-            String expectedMessage = "Expense report submitted, waiting approval";
-            String actualMessage = expenseToSubmit.submittedMessage.getText();
-        }
+        String expectedMessage = "Expense report submitted, waiting approval";
+        String actualMessage = expenseToSubmit.submittedMessage.getText();
+    }
 
 
-        @Test (priority = 2)
-        public void expenseReportsToApproveTest() throws InterruptedException {
+    @Test(priority = 2)
+    public void expenseReportsToApproveTest() throws InterruptedException {
 
-            expenses_main_page.expenseReport.click();
+        expenses_main_page.expenseReport.click();
 //Checking if Header contains Sign My Reports and If it is displayed
-            String expectedSign = "My Reports";
-            WebElement actualSign = expense_reports_page.myReporstsSign;
-            Assert.assertEquals(actualSign.getText(), expectedSign, "Header sign on Expenses Report Page");
-            Assert.assertTrue(actualSign.isDisplayed());
+        String expectedSign = "My Reports";
+        WebElement actualSign = expense_reports_page.myReporstsSign;
+        Assert.assertEquals(actualSign.getText(), expectedSign, "Header sign on Expenses Report Page");
+        Assert.assertTrue(actualSign.isDisplayed());
 
 //Press Create Button
 
-            Thread.sleep(2000);
-            expense_reports_page.createBtn.click();
+        Thread.sleep(2000);
+        expense_reports_page.createBtn.click();
 // Assert Header contains "NEW" after pressed Create new button;
-            String expectedNewSign = "New";
-            String actualNewSign = expense_reports_page.newHeader.getText();
-            Assert.assertEquals(expectedNewSign, actualNewSign, "Something Wrong with New Sign");
+        String expectedNewSign = "New";
+        String actualNewSign = expense_reports_page.newHeader.getText();
+        Assert.assertEquals(expectedNewSign, actualNewSign, "Something Wrong with New Sign");
 
-            expense_reports_page.expense_Report_SummaryField.sendKeys(Config.getProperty("expenseDescription"));
-            //       expense_reports_page.employee_to_selectField.sendKeys("Kristen Bell"+ Keys.ENTER);
-            expense_reports_page.employee_to_selectField.click();
+        expense_reports_page.expense_Report_SummaryField.sendKeys(Config.getProperty("expenseDescription"));
+        //       expense_reports_page.employee_to_selectField.sendKeys("Kristen Bell"+ Keys.ENTER);
+        expense_reports_page.employee_to_selectField.click();
 //expense_reports_page.employeeFromList.click();
-            Driver.getDriver().findElement(By.xpath("//li[.='" + Config.getProperty("employee") + "']")).click();
-            expense_reports_page.addAnItem.click();
-            Thread.sleep(2000);
+        Driver.getDriver().findElement(By.xpath("//li[.='" + Config.getProperty("employee") + "']")).click();
+        expense_reports_page.addAnItem.click();
+        Thread.sleep(2000);
 
-            String expectedTableHeader = "Add: Expense Lines";
-            String actualTableHeader = expense_reports_page.tableHeader.getText();
-            Assert.assertEquals(actualTableHeader, expectedTableHeader, "Something wrong with Add: Expense Lines" +
-                    "header of the table");
-            expense_reports_page.filter_in_bigWindow.sendKeys(Config.getProperty("employee") + Keys.ENTER);
+        String expectedTableHeader = "Add: Expense Lines";
+        String actualTableHeader = expense_reports_page.tableHeader.getText();
+        Assert.assertEquals(actualTableHeader, expectedTableHeader, "Something wrong with Add: Expense Lines" +
+                "header of the table");
+        expense_reports_page.filter_in_bigWindow.sendKeys(Config.getProperty("employee") + Keys.ENTER);
 
-            Thread.sleep(2000);
-            expense_reports_page.checkBox_inTable.click();
+        Thread.sleep(2000);
+        expense_reports_page.checkBox_inTable.click();
 
-            expense_reports_page.selectButton.click();
-            Thread.sleep(2000);
-            expense_reports_page.saveButton.click();
-            String expectedMessage = "Expense report submitted, waiting approval";
-            String actualMessage = expense_reports_page.confirmMessage.getText();
-            Assert.assertTrue(actualMessage.contains(expectedMessage));
-            Assert.assertTrue(expense_reports_page.confirmMessage.isDisplayed());
-            Driver.quitDriver();
+        expense_reports_page.selectButton.click();
+        Thread.sleep(2000);
+        expense_reports_page.saveButton.click();
+        String expectedMessage = "Expense report submitted, waiting approval";
+        String actualMessage = expense_reports_page.confirmMessage.getText();
+        Assert.assertTrue(actualMessage.contains(expectedMessage));
+        Assert.assertTrue(expense_reports_page.confirmMessage.isDisplayed());
+        Driver.quitDriver();
 
-        }
-    @Test (priority = 3)
-    public void verificationReportsTable(){
+    }
+
+    @Test(priority = 3)
+    public void verificationReportsTable() {
         Expense_Reports_To_Approve_Page expense_reports_to_approve_page = new Expense_Reports_To_Approve_Page();
         expenses_main_page.expenseReportsToApprove.click();
 
 //Checking expenses description from from Expense Reports to Approve table(Max)
-        String actualDescription=expense_reports_to_approve_page.expenseReportSummary.getText();
+        String actualDescription = expense_reports_to_approve_page.expenseReportSummary.getText();
         String expectedDescription = Config.getProperty("expenseDescription");
-        Assert.assertEquals(actualDescription,expectedDescription,"Description doesn match");
+        Assert.assertEquals(actualDescription, expectedDescription, "Description doesn match");
 
 //Checking employee name from Expense Reports to Approve table(Max)
         String actualName = expense_reports_to_approve_page.expenseReportEmployeeName.getText();
         String expectedName = Config.getProperty("employee");
-        Assert.assertEquals(actualName,expectedName,"Names doesnt match");
+        Assert.assertEquals(actualName, expectedName, "Names doesnt match");
 
 ////Checking report status from Expense Reports to Approve table(Max)
         String actualStatus = expense_reports_to_approve_page.expenseReportStatus.getText();
-        String expectedStatus= "Submitted";
-        Assert.assertEquals(actualStatus,expectedStatus,"Status doesnt match");
+        String expectedStatus = "Submitted";
+        Assert.assertEquals(actualStatus, expectedStatus, "Status doesnt match");
         Driver.quitDriver();
 
     }
 
     @Test(priority = 4)
-    public void submittedTest() throws  InterruptedException{
+    public void submittedTest() throws InterruptedException {
         to_approve.expensesToApprove.click();
         Thread.sleep(4000);
         List<WebElement> statuses = to_approve.expensesSubmittedStatus;
@@ -197,8 +198,8 @@ public class SmokeSuit {
 
     }
 
-    @Test (priority = 7)
-    public void VerifyRefuseButton() throws InterruptedException{
+    @Test(priority = 7)
+    public void VerifyRefuseButton() throws InterruptedException {
 
 //        5	Click on Expense Reports to Approve at the left side
         expenses_main_page.expenseReportsToApprove.click();
@@ -221,13 +222,13 @@ public class SmokeSuit {
         List<String> listOfStatusString = new ArrayList<>();
 
         Thread.sleep(5000);
-        for (WebElement element: to_approve.listOfElements) {
+        for (WebElement element : to_approve.listOfElements) {
             String s = element.getText();
             listOfStatusString.add(s);
         }
         System.out.println(listOfStatusString);
 
-        Assert.assertTrue(listOfStatusString.contains("Approved") && listOfStatusString.contains("Submitted") && listOfStatusString.contains("Refused") );
+        Assert.assertTrue(listOfStatusString.contains("Approved") && listOfStatusString.contains("Submitted") && listOfStatusString.contains("Refused"));
 
 //        9	Click on one of the submitted expenses displayed in the list
 
@@ -275,8 +276,34 @@ public class SmokeSuit {
 
     }
 
+    @Test(priority = 1)
+    public void goToExpensesModule() {
+        to_approve.expensesModule.click();
+        to_approve.expensesReportsToApprove.click();
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedInTitle = "Odoo";
+        Assert.assertTrue(actualTitle.contains(expectedInTitle), "");
+    }
+
+    @Test(priority = 2)
+    public void submitedEntryList() {
+        int amountOfSubmittedEntry = to_approve.submittedList.size();
+        int amountOfDisplayedSubmitedEntry = Integer.parseInt(to_approve.amountOfDisplayedSubmittedEntry.getText());
+        Assert.assertEquals(amountOfDisplayedSubmitedEntry, amountOfSubmittedEntry, "Not passed");
+    }
+
+    @Test(priority = 3)
+    public void approveEntry() {
+
+        to_approve.sampleEntry.click();
+        to_approve.approveButton.click();
+
+        Assert.assertTrue(to_approve.approveButton.isDisplayed(), "Not passed");
+
+    }
+
     @AfterMethod
-    public void quitDriver(){
+    public void quitDriver() {
         Driver.quitDriver();
-        }
+    }
 }
