@@ -9,7 +9,9 @@ import java.util.List;
 
 public class Expense_Reports_To_Approve_Page {
 
+
     public Expense_Reports_To_Approve_Page (){
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -37,7 +39,6 @@ public class Expense_Reports_To_Approve_Page {
     @FindBy(xpath = "//ul[@class='dropdown-menu o_searchview_autocomplete']/li[3]")
     public WebElement refusedOption;
 
-<<<<<<< HEAD
     @FindBy(xpath = "(//span[@class='oe_menu_text'])[9]")
     public WebElement expensesModule;
     @FindBy(xpath = "(//span[@class='oe_menu_text'])[25]")
@@ -51,7 +52,6 @@ public class Expense_Reports_To_Approve_Page {
     @FindBy(xpath = "//button[.='Approve']")
     public WebElement approveButton;
 
-=======
 // Expenses report description from Expense Reports to Approve table(Max)
     @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[2]")
     public WebElement expenseReportSummary;
@@ -91,6 +91,5 @@ public class Expense_Reports_To_Approve_Page {
 
     @FindBy(xpath = "//ul[@class='dropdown-menu o_searchview_autocomplete']//li[3]")
     public WebElement SubmittedDropDown;
->>>>>>> 44402756c35477f66bf512475a0b7508d1d89675
 
 }

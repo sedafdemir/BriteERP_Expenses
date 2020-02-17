@@ -9,12 +9,12 @@ import page.Expense_Reports_To_Approve_Page;
 import utilities.Driver;
 
 public class ExpenseReportToApprove {
-    LogingPageTest loginObject = new LogingPageTest();
+
     Expense_Reports_To_Approve_Page moduleObject = new Expense_Reports_To_Approve_Page();
 
     @BeforeClass
     public void login(){
-        loginObject.loginTest();
+        LoginPageTest.loginTest();
     }
 
     @Test(priority = 1)

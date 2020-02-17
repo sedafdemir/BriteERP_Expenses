@@ -27,7 +27,7 @@ public class ExpensesToApproveToRefuse {
 //        3	Click login button
 //        4	Click Expense module at the top
 
-        LogingPageTest.loginTest();
+//        LogingPageTest.loginTest();
     }
 
     @Test

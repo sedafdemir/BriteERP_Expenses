@@ -5,7 +5,7 @@ import page.Login_Page;
 import utilities.Config;
 import utilities.Driver;
 
-public class LogingPageTest {
+public class LoginPageTest {
 
 
 
@@ -15,8 +15,8 @@ public class LogingPageTest {
 
         Driver.getDriver().get(Config.getProperty("url"));
 
-        lp.emailInput.sendKeys(Config.getProperty("emailManager"));
-        lp.passwordInput.sendKeys(Config.getProperty("passwordManager"));
+        lp.emailInput.sendKeys(Config.getProperty("email"));
+        lp.passwordInput.sendKeys(Config.getProperty("password"));
         lp.loginButton.click();
         lp.expenseModule.click();
 
@@ -25,4 +25,4 @@ public class LogingPageTest {
 
 }
 
-    }
+
