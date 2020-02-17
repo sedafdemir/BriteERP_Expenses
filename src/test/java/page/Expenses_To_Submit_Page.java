@@ -49,5 +49,11 @@ public class Expenses_To_Submit_Page {
     @FindBy(xpath = "//button[.='Submit to Manager']")
     public WebElement submitToManagerButton;
 
+    @FindBy(xpath = "//p[.='Expense created']")
+    public WebElement expenseCreatedText;
+
+    @FindBy (xpath = "(//div[@class='o_thread_message_content']/p)[1]")
+    public WebElement submittedMessage;
+
 
 }
