@@ -5,14 +5,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.Expense_Reports_Page;
-import page.Expense_Reports_To_Approve_Page;
-import page.Expenses_Main_Page;
-import page.Login_Page;
+import pages.Expense_Reports_Page;
+import pages.Expense_Reports_To_Approve_Page;
+import pages.Expenses_Main_Page;
 import utilities.Config;
 import utilities.Driver;
-
-import java.util.concurrent.TimeUnit;
 
 public class ExpenseReportstoApproveTest {
 

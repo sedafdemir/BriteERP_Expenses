@@ -4,8 +4,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.Expense_Reports_Page;
-import page.Expenses_Main_Page;
+import pages.Expense_Reports_Page;
+import pages.Expenses_Main_Page;
 
 public class Max {
 

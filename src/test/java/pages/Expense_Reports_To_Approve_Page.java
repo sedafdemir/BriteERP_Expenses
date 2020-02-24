@@ -1,4 +1,4 @@
-package page;
+package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,7 +62,7 @@ public class Expense_Reports_To_Approve_Page {
     public WebElement expenseReportSummary;
 
 //Expenses report employee name from Expense Reports to Approve table(Max)
-    @FindBy(xpath = "//tbody[@class='ui-sortable']//tr//td[4]")
+    @FindBy(xpath = "//tbody[@class='ui-sortable']//tr[2]//td[4]")
     public WebElement expenseReportEmployeeName;
 
 //Expenses report report status from Expense Reports to Approve table(Max)
