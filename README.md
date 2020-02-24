@@ -7,7 +7,7 @@ supply chain, operations, reporting, manufacturing, and human resource activitie
 If new member want to use this project he need to have instaled : JAVA version 13, Selenium libraries.
 Also be able to accses TechPro Jira Board and TechProOrganization repozitory on Git Hub.
 ## Working on IDE:
-### Dont forget tu pull the most updated code from the Git!
+### Dont forget to pull the most updated code from the Git!
 Once you done with your part of code you have to updated on the Git.
 Before you pushing your code to the git you must perform complete testing of your code in Inteliji to make sure thats its working as expected.
 ## GIT branching strategy:
