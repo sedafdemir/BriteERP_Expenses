@@ -1,20 +1,22 @@
 package tests_pages;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.Expenses_To_Submit_Page;
+import pages.Expenses_To_Submit_Page;
 import utilities.Config;
 import utilities.Driver;
 
-import java.util.Collection;
-
 public class ExpensesToSubmitTest {
 
-    @Test
-    public void createButton(){
+
+    @Test                       // Begimai
+    public void createExpense() throws InterruptedException{
+
 
         Expenses_To_Submit_Page expenseToSubmit = new Expenses_To_Submit_Page();
-        LogingPageTest.loginTest();
+        LoginPageTest.loginTest();
+
         Assert.assertTrue(expenseToSubmit.textDisplay.isDisplayed());
 
         expenseToSubmit.createButton.click();
@@ -23,15 +25,22 @@ public class ExpensesToSubmitTest {
         expenseToSubmit.expenseDescriptionInput.sendKeys(Config.getProperty("expenseDescription"));
 
         expenseToSubmit.productInput.click();
-        expenseToSubmit.chosenProduct.click();
+        Driver.getDriver().findElement(By.xpath("//a[.='"+Config.getProperty("product")+"']")).click();
 
         expenseToSubmit.employeeField.click();
-        expenseToSubmit.employeeName.click();
+        Driver.getDriver().findElement(By.xpath("//a[.='"+Config.getProperty("employee")+"']")).click();
+
         expenseToSubmit.saveButton.click();
 
-//        expenseToSubmit
+        Assert.assertTrue(expenseToSubmit.textAfterSave.isDisplayed());
 
+        expenseToSubmit.submitToManagerButton.click();
+        Thread.sleep(2000);
+        expenseToSubmit.saveButton.click();
 
-
+        String expectedMessage = "Expense report submitted, waiting approval";
+        String actualMessage = expenseToSubmit.submittedMessage.getText();
+        Assert.assertEquals(actualMessage, expectedMessage);
+        Driver.quitDriver();
     }
 }
