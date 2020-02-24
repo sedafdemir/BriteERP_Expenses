@@ -1,11 +1,10 @@
 package tests_pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page.Expense_Reports_To_Approve_Page;
+import pages.Expense_Reports_To_Approve_Page;
 
 
 import java.util.List;

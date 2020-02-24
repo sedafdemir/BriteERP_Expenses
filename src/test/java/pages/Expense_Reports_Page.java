@@ -1,11 +1,9 @@
-package page;
+package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
-
-import java.util.Random;
 
 public class Expense_Reports_Page {
     public Expense_Reports_Page(){

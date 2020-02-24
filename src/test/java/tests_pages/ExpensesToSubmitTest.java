@@ -3,7 +3,7 @@ package tests_pages;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.Expenses_To_Submit_Page;
+import pages.Expenses_To_Submit_Page;
 import utilities.Config;
 import utilities.Driver;
 

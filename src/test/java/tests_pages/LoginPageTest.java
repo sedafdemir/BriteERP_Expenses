@@ -1,7 +1,7 @@
 package tests_pages;
 
 import org.testng.annotations.Test;
-import page.Login_Page;
+import pages.Login_Page;
 import utilities.Config;
 import utilities.Driver;
 
