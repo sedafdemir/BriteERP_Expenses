@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="BriteERP_Expenses" />
+        <module name="BriteERP_ExpensesSeda" />
         <module name="Brite_ERP_Expenses" />
+        <module name="BriteERP_Expenses" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="13" />
